@@ -4,9 +4,17 @@
 
 type student {
   id: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  deletedAt: DateTime!
   name: String!
   key: String!
 }
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
 
 type DeleteManyResponse {
   """The number of records deleted."""
@@ -15,6 +23,9 @@ type DeleteManyResponse {
 
 type StudentDeleteResponse {
   id: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  deletedAt: DateTime
   name: String
   key: String
 }
@@ -44,21 +55,25 @@ type StudentConnection {
 }
 
 type studentAggregateGroupBy {
+  createdAt: DateTime
   name: String
   key: String
 }
 
 type studentCountAggregate {
+  createdAt: Int
   name: Int
   key: Int
 }
 
 type studentMinAggregate {
+  createdAt: DateTime
   name: String
   key: String
 }
 
 type studentMaxAggregate {
+  createdAt: DateTime
   name: String
   key: String
 }
@@ -91,8 +106,29 @@ input OffsetPaging {
 input studentFilter {
   and: [studentFilter!]
   or: [studentFilter!]
+  createdAt: DateFieldComparison
   name: StringFieldComparison
   key: StringFieldComparison
+}
+
+input DateFieldComparison {
+  is: Boolean
+  isNot: Boolean
+  eq: DateTime
+  neq: DateTime
+  gt: DateTime
+  gte: DateTime
+  lt: DateTime
+  lte: DateTime
+  in: [DateTime!]
+  notIn: [DateTime!]
+  between: DateFieldComparisonBetween
+  notBetween: DateFieldComparisonBetween
+}
+
+input DateFieldComparisonBetween {
+  lower: DateTime!
+  upper: DateTime!
 }
 
 input StringFieldComparison {
@@ -119,6 +155,7 @@ input studentSort {
 }
 
 enum studentSortFields {
+  createdAt
   name
   key
 }
@@ -183,6 +220,7 @@ input UpdateManyStudentsInput {
 input studentUpdateFilter {
   and: [studentUpdateFilter!]
   or: [studentUpdateFilter!]
+  createdAt: DateFieldComparison
   name: StringFieldComparison
   key: StringFieldComparison
 }
@@ -200,6 +238,7 @@ input DeleteManyStudentsInput {
 input studentDeleteFilter {
   and: [studentDeleteFilter!]
   or: [studentDeleteFilter!]
+  createdAt: DateFieldComparison
   name: StringFieldComparison
   key: StringFieldComparison
 }

@@ -7,6 +7,7 @@ import { join } from 'path';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { StudentsModule } from './modules/students/students.module';
 
+
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -29,6 +30,7 @@ import { StudentsModule } from './modules/students/students.module';
 
     }),
     StudentsModule,
+   
 
   ],
   controllers: [AppController],
