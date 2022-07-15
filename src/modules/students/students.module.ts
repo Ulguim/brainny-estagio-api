@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-
 import { NestjsQueryGraphQLModule, PagingStrategies } from '@nestjs-query/query-graphql'; import { NestjsQueryTypeOrmModule } from '@nestjs-query/query-typeorm';
 import { StudentDTO } from './dto/student.dto';
 import { Student } from './entities/student.entity';

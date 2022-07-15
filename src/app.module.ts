@@ -6,6 +6,9 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { StudentsModule } from './modules/students/students.module';
+import { DiciplinesModule } from './modules/diciplines/disciplines.module';
+import { LessonsModule } from './modules/lessons/lessons.module';
+import { ContentsModule } from './modules/contents/contents.module';
 
 
 @Module({
@@ -30,6 +33,9 @@ import { StudentsModule } from './modules/students/students.module';
 
     }),
     StudentsModule,
+    DiciplinesModule,
+    LessonsModule,
+    ContentsModule,
    
 
   ],
