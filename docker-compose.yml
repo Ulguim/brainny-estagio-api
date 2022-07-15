@@ -18,7 +18,7 @@ services:
     depends_on:
       - postgres
   postgres:
-    container_name: brainny_db
+    container_name: brainny
     image: postgres:11.5
     networks:
       - backend

@@ -9,6 +9,17 @@ import { StudentsModule } from './modules/students/students.module';
 
 @Module({
   imports: [
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: 'brainny',
+      port: 5432,
+      username: 'postgres',
+      password: 'unlocked',
+      database: 'brainny',
+      entities: ["**/modules/**/entities/*.js"],
+      synchronize: true,
+      logging:true
+    }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),

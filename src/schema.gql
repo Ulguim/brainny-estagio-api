@@ -1,0 +1,205 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type student {
+  id: String!
+  name: String!
+  key: String!
+}
+
+type DeleteManyResponse {
+  """The number of records deleted."""
+  deletedCount: Int!
+}
+
+type StudentDeleteResponse {
+  id: String
+  name: String
+  key: String
+}
+
+type UpdateManyResponse {
+  """The number of records updated."""
+  updatedCount: Int!
+}
+
+type OffsetPageInfo {
+  """true if paging forward and there are more records."""
+  hasNextPage: Boolean
+
+  """true if paging backwards and there are more records."""
+  hasPreviousPage: Boolean
+}
+
+type StudentConnection {
+  """Paging information"""
+  pageInfo: OffsetPageInfo!
+
+  """Array of nodes."""
+  nodes: [student!]!
+
+  """Fetch total count of records"""
+  totalCount: Int!
+}
+
+type studentAggregateGroupBy {
+  name: String
+  key: String
+}
+
+type studentCountAggregate {
+  name: Int
+  key: Int
+}
+
+type studentMinAggregate {
+  name: String
+  key: String
+}
+
+type studentMaxAggregate {
+  name: String
+  key: String
+}
+
+type Query {
+  student(
+    """The id of the record to find."""
+    id: ID!
+  ): student
+  students(
+    """Limit or page results."""
+    paging: OffsetPaging = {limit: 10}
+
+    """Specify to filter the records returned."""
+    filter: studentFilter = {}
+
+    """Specify to sort results."""
+    sorting: [studentSort!] = []
+  ): StudentConnection!
+}
+
+input OffsetPaging {
+  """Limit the number of records returned"""
+  limit: Int
+
+  """Offset to start returning records from"""
+  offset: Int
+}
+
+input studentFilter {
+  and: [studentFilter!]
+  or: [studentFilter!]
+  name: StringFieldComparison
+  key: StringFieldComparison
+}
+
+input StringFieldComparison {
+  is: Boolean
+  isNot: Boolean
+  eq: String
+  neq: String
+  gt: String
+  gte: String
+  lt: String
+  lte: String
+  like: String
+  notLike: String
+  iLike: String
+  notILike: String
+  in: [String!]
+  notIn: [String!]
+}
+
+input studentSort {
+  field: studentSortFields!
+  direction: SortDirection!
+  nulls: SortNulls
+}
+
+enum studentSortFields {
+  name
+  key
+}
+
+"""Sort Directions"""
+enum SortDirection {
+  ASC
+  DESC
+}
+
+"""Sort Nulls Options"""
+enum SortNulls {
+  NULLS_FIRST
+  NULLS_LAST
+}
+
+type Mutation {
+  createOneStudent(input: CreateOneStudentInput!): student!
+  createManyStudents(input: CreateManyStudentsInput!): [student!]!
+  updateOneStudent(input: UpdateOneStudentInput!): student!
+  updateManyStudents(input: UpdateManyStudentsInput!): UpdateManyResponse!
+  deleteOneStudent(input: DeleteOneStudentInput!): StudentDeleteResponse!
+  deleteManyStudents(input: DeleteManyStudentsInput!): DeleteManyResponse!
+}
+
+input CreateOneStudentInput {
+  """The record to create"""
+  student: CreateStudentInput!
+}
+
+input CreateStudentInput {
+  name: String!
+  key: String!
+}
+
+input CreateManyStudentsInput {
+  """Array of records to create"""
+  students: [CreateStudentInput!]!
+}
+
+input UpdateOneStudentInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateStudentInput!
+}
+
+input UpdateStudentInput {
+  name: String!
+  key: String!
+}
+
+input UpdateManyStudentsInput {
+  """Filter used to find fields to update"""
+  filter: studentUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateStudentInput!
+}
+
+input studentUpdateFilter {
+  and: [studentUpdateFilter!]
+  or: [studentUpdateFilter!]
+  name: StringFieldComparison
+  key: StringFieldComparison
+}
+
+input DeleteOneStudentInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteManyStudentsInput {
+  """Filter to find records to delete"""
+  filter: studentDeleteFilter!
+}
+
+input studentDeleteFilter {
+  and: [studentDeleteFilter!]
+  or: [studentDeleteFilter!]
+  name: StringFieldComparison
+  key: StringFieldComparison
+}
