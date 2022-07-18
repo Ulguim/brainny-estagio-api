@@ -6,9 +6,13 @@ import { Column, Entity, OneToMany } from 'typeorm';
 
 @Entity()
 export class Lesson extends Base {
-  @Column()
+  @Column(
+    {
+      length:255
+    }
+  )
   description: string;
 
-  @OneToMany(() => Content, content => content.lesson)
+  @OneToMany(() => Content, content => content.lesson,{nullable:true,cascade:true})
   contents: Content[];
 }

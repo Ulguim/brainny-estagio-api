@@ -5,7 +5,9 @@ import { Student } from 'src/modules/students/entities/student.entity';
 import { ManyToMany } from 'typeorm';
 @Entity()
 export class Discipline  extends Base{
-  @Column()
+  @Column({
+    length:45
+  })
   name:string;
 
   @ManyToMany(()=>Student, (students)=> students.disciplines,)
