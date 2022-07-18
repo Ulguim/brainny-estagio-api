@@ -13,4 +13,7 @@ export class Content extends Base {
 
   @ManyToOne(() => Lesson)
   lesson: Lesson;
+  // Alternativa 2
+  // @Column()
+  // lessonId:String
 }
