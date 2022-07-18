@@ -1,8 +1,11 @@
 import { InputType, Int, Field } from '@nestjs/graphql';
+import { isNotEmpty } from 'class-validator';
 import { UpdateLessonInput } from 'src/modules/lessons/dto/update-lesson.input';
 @InputType()
 export class CreateContentInput {
+  
   @Field()
+ 
   description:string;
   @Field()
   linkContent?:string;

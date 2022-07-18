@@ -5,15 +5,22 @@ import { Column, Entity, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from 't
 @Entity()
 export class Content extends Base {
 
-  @Column()
+  @Column({
+    length: 250
+    
+
+  })
   description: string;
-  
-  @Column({ nullable: true })
+
+  @Column({
+    nullable: true,
+    length: 45
+  })
   linkContent: string;
 
-  @ManyToOne(() => Lesson)
+  @ManyToOne(() => Lesson,)
   lesson: Lesson;
-  // Alternativa 2
-  // @Column()
-  // lessonId:String
+
+  @Column({ nullable: true })
+  lessonId: String
 }

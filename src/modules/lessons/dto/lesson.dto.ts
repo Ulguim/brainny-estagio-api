@@ -10,7 +10,7 @@ import { ContentDTO } from 'src/modules/contents/dto/content.dto';
 @ObjectType('lesson')
 @FilterableOffsetConnection('Content',()=> ContentDTO,{nullable:true})
 export class LessonDTO  extends BaseDTO{
-  @FilterableField()
+  @FilterableField({nullable:true})
   description:string;
 
   

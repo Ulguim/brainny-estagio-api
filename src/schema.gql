@@ -294,7 +294,7 @@ type lesson {
   createdAt: DateTime!
   updatedAt: DateTime!
   deletedAt: DateTime!
-  description: String!
+  description: String
   contents(
     """Limit or page results."""
     paging: OffsetPaging = {limit: 10}
@@ -312,6 +312,7 @@ input ContentFilter {
   or: [ContentFilter!]
   createdAt: DateFieldComparison
   description: StringFieldComparison
+  linkContent: StringFieldComparison
   lesson: ContentFilterlessonFilter
 }
 
@@ -331,6 +332,7 @@ input ContentSort {
 enum ContentSortFields {
   createdAt
   description
+  linkContent
 }
 
 type LessonDeleteResponse {
@@ -406,21 +408,25 @@ type ContentConnection {
 type ContentAggregateGroupBy {
   createdAt: DateTime
   description: String
+  linkContent: String
 }
 
 type ContentCountAggregate {
   createdAt: Int
   description: Int
+  linkContent: Int
 }
 
 type ContentMinAggregate {
   createdAt: DateTime
   description: String
+  linkContent: String
 }
 
 type ContentMaxAggregate {
   createdAt: DateTime
   description: String
+  linkContent: String
 }
 
 type Query {
@@ -495,6 +501,7 @@ input lessonFilterContentFilter {
   or: [lessonFilterContentFilter!]
   createdAt: DateFieldComparison
   description: StringFieldComparison
+  linkContent: StringFieldComparison
 }
 
 input lessonSort {
@@ -594,8 +601,8 @@ input UpdateOneStudentInput {
 }
 
 input UpdateStudentInput {
-  name: String!
-  key: String!
+  name: String
+  key: String
 }
 
 input UpdateManyStudentsInput {
@@ -857,6 +864,7 @@ input ContentUpdateFilter {
   or: [ContentUpdateFilter!]
   createdAt: DateFieldComparison
   description: StringFieldComparison
+  linkContent: StringFieldComparison
 }
 
 input DeleteOneContentInput {
@@ -874,4 +882,5 @@ input ContentDeleteFilter {
   or: [ContentDeleteFilter!]
   createdAt: DateFieldComparison
   description: StringFieldComparison
+  linkContent: StringFieldComparison
 }
